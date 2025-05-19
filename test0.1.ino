@@ -18,7 +18,7 @@ void setup() {
 
 // Función para detectar color en base a los valores normalizados y a la claridad
 String detectarColor(float fr, float fg, float fb, uint16_t c) {
-  if (c < 200) {
+  if (c < 80) {
     return "Negro";
   } else if (fr > 0.4 && fg < 0.3 && fb < 0.3) {
     return "Rojo";
@@ -26,7 +26,7 @@ String detectarColor(float fr, float fg, float fb, uint16_t c) {
     return "Verde";
   } else if (fr < 0.3 && fg < 0.3 && fb > 0.4) {
     return "Azul";
-  } else if (fr > 0.3 && fg > 0.3 && fb > 0.3 && c > 1500) {
+  } else if (fr > 0.27 && fg > 0.27 && fb > 0.27 && c > 1000) {
     return "Blanco";
   } else {
     return "Desconocido";
@@ -50,9 +50,9 @@ void loop() {
   uint16_t lux = tcs.calculateLux(r, g, b);
 
   // Muestra información en el monitor serial
-  Serial.print("Rojo: "); Serial.print(r);
-  Serial.print(" Verde: "); Serial.print(g);
-  Serial.print(" Azul: "); Serial.print(b);
+  Serial.print("Rojo: "); Serial.print(fr);
+  Serial.print(" Verde: "); Serial.print(fg);
+  Serial.print(" Azul: "); Serial.print(fb);
   Serial.print(" Clear: "); Serial.print(c);
   Serial.print(" Lux: "); Serial.print(lux);
   Serial.print(" Temp Color: "); Serial.print(colorTemp); Serial.print(" K");
